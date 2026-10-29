@@ -27,17 +27,28 @@ const INVENTORY = [
  * @returns {number[]} ids of given items
  */
 function getIds(items) {
-  // TODO
+  // const output = [];
+  // for (const element of items) {
+  //   output.push(element.id);
+  // }
+  // return output;
+  return items.map((items) => items.id);
 }
+// console.log("getIds:", getIds(INVENTORY));
 
 /**
  * @param {Item[]} items
  * @returns {string[]} categories of given items
  */
 function getCategories(items) {
-  // TODO
+  // const output = [];
+  // for (const element of items) {
+  //   output.push(element.category);
+  // }
+  // return output;
+  return items.map((items) => items.category);
 }
-
+// console.log("getCategories:", getCategories(INVENTORY));
 /**
  * Vendors often use SKUs (Stock Keeping Units) to manage their inventory.
  * SKU formats are not standardized, so for this exercise, we will use the format
@@ -48,25 +59,33 @@ function getCategories(items) {
  * @returns {string[]} SKUs of given items
  */
 function getSkus(items) {
-  // TODO
+  const output = [];
+  for (const element of items) {
+    output.push(element.id + "#" + element.name + "#" + element.name.length);
+  }
+  return output;
 }
-
+// console.log("getSkus:", getSkus(INVENTORY));
 /**
  * @param {Item[]} items
  * @returns {Item[]} all items in the "fruit" category
  */
 function getFruits(items) {
-  // TODO
+  const output = items.filter((item) => item.category === "fruit");
+  return output;
 }
-
+// console.log("getFruits:", getFruits(INVENTORY));
 /**
  * @param {Item[]} items
  * @param {string} category
  * @returns {Item[]} all items in the given category
  */
 function getItemsByCategory(items, category) {
-  // TODO
+  const output = items.filter((item) => item.category === category);
+  return output;
 }
+
+// console.log(getItemsByCategory(INVENTORY, "dairy"));
 
 /**
  * An item is considered "cheap" if its price is $2.50 or less.
@@ -74,29 +93,50 @@ function getItemsByCategory(items, category) {
  * @returns {Item[]} all cheap items
  */
 function getCheapItems(items) {
-  // TODO
+  return items.filter((item) => item.price <= 2.5);
 }
-
+// console.log(getCheapItems(INVENTORY));
 /**
  * @param {Item[]} items
  * @returns {number} the total quantity of all items given
  */
 function countItems(items) {
-  // TODO
+  const array = [];
+  for (const element of items) {
+    array.push(element.quantity);
+  }
+  return array.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
 }
-
+// console.log(countItems(INVENTORY));
 /**
  * @param {Item[]} items
  * @returns {number} the cost of purchasing every single item
  */
 function getTotalCost(items) {
-  // TODO
+  const array = [];
+  for (const element of items) {
+    array.push(element.price);
+  }
+  return array.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+  );
 }
-
+// console.log(getTotalCost(INVENTORY));
 /**
  * @param {Item[]} items
  * @returns {Item} the item with the highest price
  */
 function getMostExpensiveItem(items) {
-  // TODO
+  const array = [];
+  for (const element of items) {
+    array.push(element.price);
+  }
+  return array.reduce((accumulator, currentValue) =>
+    Math.max(accumulator, currentValue),
+  );
 }
+// console.log(getMostExpensiveItem(INVENTORY));
