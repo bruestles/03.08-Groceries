@@ -59,13 +59,16 @@ function getCategories(items) {
  * @returns {string[]} SKUs of given items
  */
 function getSkus(items) {
-  const output = [];
-  for (const element of items) {
-    output.push(element.id + "#" + element.name + "#" + element.name.length);
-  }
-  return output;
+  // const output = [];
+  // for (const element of items) {
+  //   output.push(element.id + "#" + element.name + "#" + element.name.length);
+  // }
+  // return output;
+  return items.map(
+    (items) => items.id + "#" + items.name + "#" + items.name.length,
+  );
 }
-// console.log("getSkus:", getSkus(INVENTORY));
+console.log("getSkus:", getSkus(INVENTORY));
 /**
  * @param {Item[]} items
  * @returns {Item[]} all items in the "fruit" category
