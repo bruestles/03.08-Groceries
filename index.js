@@ -68,7 +68,7 @@ function getSkus(items) {
     (items) => items.id + "#" + items.name + "#" + items.name.length,
   );
 }
-console.log("getSkus:", getSkus(INVENTORY));
+// console.log("getSkus:", getSkus(INVENTORY));
 /**
  * @param {Item[]} items
  * @returns {Item[]} all items in the "fruit" category
@@ -134,12 +134,15 @@ function getTotalCost(items) {
  * @returns {Item} the item with the highest price
  */
 function getMostExpensiveItem(items) {
-  const array = [];
-  for (const element of items) {
-    array.push(element.price);
-  }
-  return array.reduce((accumulator, currentValue) =>
-    Math.max(accumulator, currentValue),
-  );
+  // const array = [];
+  // for (const element of items) {
+  //   array.push(element.price);
+  // }
+  // return array.reduce((accumulator, currentValue) =>
+  //   Math.max(accumulator, currentValue),
+  // );
+  return items
+    .map((item) => item.price)
+    .reduce((accumulator, currentValue) => Math.max(accumulator, currentValue));
 }
 // console.log(getMostExpensiveItem(INVENTORY));
